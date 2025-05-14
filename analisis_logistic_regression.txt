@@ -1,0 +1,71 @@
+El siguiente ejercicio de regresión logística se realizo ocn un dataset con las siguientes especificaciones.
+Demográficos:
+• Sexo: masculino o femenino (Nominal) 1 masculino /  0 femenino
+• Edad: Edad del paciente; (Continua - Aunque las edades registradas han sido truncadas a números enteros, 
+  el concepto de edad es continuo)
+
+Conductuales:
+• Fumador actual: si el paciente fuma actualmente o no (Nominal)
+• Cigarrillos por día: número de cigarrillos que la persona fuma en promedio por día (puede considerarse continua, 
+  ya que uno puede fumar cualquier cantidad de cigarrillos, incluso medio cigarrillo)
+
+Historial médico:
+• Medicación para la presión arterial: si el paciente toma o no medicación para la presión arterial (Nominal)
+• Accidente cerebrovascular prevalente: si el paciente ha tenido un accidente cerebrovascular anteriormente (Nominal)
+• Hipertensión prevalente: si el paciente ha sido hipertenso (Nominal)
+• Diabetes: si el paciente tiene diabetes o no (Nominal)
+
+Condición médica actual:
+• Colesterol total: nivel total de colesterol (Continuo)
+• Presión sistólica:presión arterial sistólica (Continua) La presión sistólica es la cifra superior de la presión arterial y 
+                    representa la fuerza que ejerce la sangre contra las paredes de las arterias cuando el corazón late y 
+                    bombea sangre.
+• Presión diastólica: presión arterial diastólica (Continua)
+• IMC: Índice de Masa Corporal (Continuo)
+• Frecuencia cardíaca: ritmo cardíaco (Continuo - En la investigación médica, variables como el ritmo cardíaco, aunque en realidad son discretas, se consideran continuas debido al gran número de valores posibles)
+• Glucosa: nivel de glucosa (Continuo)
+
+Variable predictiva (objetivo deseado):
+• Riesgo de enfermedad coronaria CHD a 10 años (binaria: “1” significa “Sí”, “0” significa “No”) TenYearCHD
+
+Usando regresión logísitica y teniendo en cuenta las siguientes varibles para nuestro X y Y:
+
+X = edad, Presión sistólica(Sys BP)
+Y = TenYearCHD
+
+
+Predecir la probabilidad de que un paciente desarrolle una enfermedad coronaria (CHD) en los próximos 10 años, 
+basándose únicamente en su edad y su presión sistólica.
+# Por ejemplo: 30 años, presión sistólica 130
+nuevo_paciente = [[30, 125]]
+
+Resultados:
+Matriz de Confusión:
+[[779   1]   → 779 verdaderos negativos (TN), 1 falso positivo (FP)
+ [132   2]]  → 132 falsos negativos (FN), 2 verdaderos positivos (TP)
+
+Métricas:
+
+1) Precisión:
+(TP + TN) / Total(TN+FP+FN+TP) = (2+779) / 914 ≈ 0.854
+El modelo tiene una Precisión de 85.4%
+
+2) Especificidad:
+TN / (TN + FP) = 779 / (779 + 1) ≈ 0.9987
+l modelo acierta el 99.87% de las veces cuando predice que no habrá CHD.
+
+3) Precisión positiva (Precision, o Valor Predictivo Positivo):
+TP/TP+FP = 2 /2 + 1 =2/3 ≈0.6667
+El modelo acierta el 66.67% de las veces cuando predice que sí habrá CHD.
+
+4) Sensibilidad (Recall positivo o Tasa de verdaderos positivos):
+TP+FN/TP = 2 / 132 + 2 = 2/134 ≈0.0149
+​El modelo solo detecta el 1.5% de los que realmente tienen CHD.
+
+Análisis de métricas:
+A partir de las estadísticas anteriores, queda claro que el modelo es más específico que sensible.
+Los valores negativos se predicen con mayor precisión que los positivos.
+Moedelo no es bueno para detectar pacientes con "si CHD"
+Precisión positiva aceptable pero en pocos casos
+Excelenten prediciendo "no CHD" por precisión negativa
+
